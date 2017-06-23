@@ -36,6 +36,15 @@
         background-size: cover;
         background-repeat:no-repeat;
       }
+      .row-center{
+        text-align:center;
+      }
+      .centered-block {
+        display:inline-block;
+        float:none;
+        text-align:center;
+        
+      }
       #trans {
         background-color:rgba(25, 151, 198, 0.376471);
         background-image:none;
@@ -111,6 +120,137 @@
         
       {% block content %}
       {% endblock content %}
+      </div>
+      <br>
+      <br>
+      <div class="container">
+        <div class="row row-center">
+          <div class="col-md-2 centered-block">
+            <h2><span id="1" class="label label-default">Test 1</span></h2>
+          </div>
+          <div class="col-md-2 centered-block">
+            <h2><span id="2" class="label label-default">Test 2</span></h2>
+          </div>
+          <div class="col-md-2 centered-block">
+            <h2><span id="3" class="label label-default">Test 3</span></h2>
+          </div>
+          <div class="col-md-2 centered-block">
+            <h2><span id="4" class="label label-default">Test 4</span></h2>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+     
+        <div class="row row-center">
+          <div class="col-md-2 centered-block">
+            <h2><span id="5" class="label label-default">Test 5</span></h2>
+          </div>
+          <div class="col-md-2 centered-block">
+            <h2><span id="6" class="label label-default">Test 6</span></h2>
+          </div>
+          <div class="col-md-2 centered-block">
+            <h2><span id="7" class="label label-default">Test 7</span></h2>
+          </div>
+          <div class="col-md-2 centered-block">
+            <h2><span id="8" class="label label-default">Test 8</span></h2>
+          </div>
+        </div>
+       </div>
+       <br>
+       <br>
+      <div class="col-md-6">
+      <div class='panel panel-primary'>
+        <div class="panel-heading"><h4>Sample Size - 20</h4></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Moves</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for prog in object %}
+          <tr>
+            <td>{{ prog.name }}</td>
+            <td>{{ prog.s_time }}</td>
+            <td>{{ prog.s_moves }}</td>
+            {% if prog.s_pass %}
+              <td><span class="label label-success">Pass</span></td>
+            {% else %}
+              <td><span class="label label-danger">Fail</span></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <!--<tr>-->
+          <!--  <td>Aaron</td>-->
+          <!--  <td>2.8s</td>-->
+          <!--  <td>39</td>-->
+          <!--  <td>Pass</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>Rob</td>-->
+          <!--  <td>3.1s</td>-->
+          <!--  <td>43</td>-->
+          <!--  <td>Pass</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>Riley</td>-->
+          <!--  <td>5.9s</td>-->
+          <!--  <td>65</td>-->
+          <!--  <td>Fail</td>-->
+          <!--</tr>-->
+        </tbody>
+      </table>
+      </div>
+      </div>
+      <div class="col-md-6">
+      <div class='panel panel-primary'>
+        <div class="panel-heading"><h4>Sample Size - 1000</h4></div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Time</th>
+            <th>Moves</th>
+            <th>Result</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for prog in object %}
+          <tr>
+            <td>{{ prog.name }}</td>
+            <td>{{ prog.b_time }}</td>
+            <td>{{ prog.b_moves }}</td>
+            {% if prog.b_pass %}
+              <td><span class="label label-success">Pass</span></td>
+            {% else %}
+              <td><span class="label label-danger">Fail</span></td>
+            {% endif %}
+          </tr>
+          {% endfor %}
+          <!--<tr>-->
+          <!--  <td>Aaron</td>-->
+          <!--  <td>28.4s</td>-->
+          <!--  <td>9562</td>-->
+          <!--  <td>Pass</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>Rob</td>-->
+          <!--  <td>28.8s</td>-->
+          <!--  <td>9555</td>-->
+          <!--  <td>Pass</td>-->
+          <!--</tr>-->
+          <!--<tr>-->
+          <!--  <td>Riley</td>-->
+          <!--  <td>48.9s</td>-->
+          <!--  <td>0</td>-->
+          <!--  <td>Fail</td>-->
+          <!--</tr>-->
+        </tbody>
+      </table>
+      </div>
       </div>
       <div class="row marketing">
         <div class="col-lg-6">

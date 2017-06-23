@@ -1,0 +1,14 @@
+{% extends "detail.html" %}
+
+{% block content %}
+<p class="lead" style="color:white;">Login to your 42 account to get started</p>
+<form method='GET' action="/login/">
+    <div class="form-group">
+      <label for="login"></label>
+    </div>
+    <div class="col-md-5 center-block" style="float: none">
+        <!--<a href="#" class="ce pi ahr">Repo</a>-->
+        <input id="testButton" type='submit' value='login'  class="btn btn-primary btn-lg center-block" name='Login';></input>
+    </div>
+</form>
+{% endblock content %}

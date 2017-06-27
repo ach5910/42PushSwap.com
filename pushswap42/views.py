@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.views.generic import DetailView
-from .repoclone import clone_repo
+from scripts.repoclone import clone_repo
 from .models import Executable
 
 

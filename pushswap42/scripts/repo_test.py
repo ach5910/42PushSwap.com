@@ -7,6 +7,8 @@ from .run_tests import get_results
 import unittest
 from pushswap42.models import Executable
 import shutil
+import errno    
+import os
 
 
 def parse_name():
@@ -38,6 +40,13 @@ def repo_test(giturl, login):
 	_name = login
 	make_ps(_name)
 	time.sleep(5)
+	try:
+		os.makedirs('./results')
+	except OSError as exc:  # Python >2.5
+		if exc.errno == errno.EEXIST and os.path.isdir(path):
+			pass
+		else:
+			raise
 	suite = unittest.TestSuite()
 	for method in dir(Test_500):
 		if method.startswith("test_"):
@@ -56,6 +65,8 @@ def repo_test(giturl, login):
 	print(max(results))
 	print(avg)
 	n.save()
+	shutil.rmtree('./repo', ignore_errors=True)
+	shutil.rmtree('./results', ignore_errors=True)
 
 
 

@@ -63,7 +63,7 @@ def request_page(request):
             print(status['first_name'])
             print(status['last_name'])
             print(status['login'])
-        # repo_test(request.GET.get("git_url"), user['login'])
+        repo_test(request.GET.get("git_url"), status['login'])
     return render(request, "repo.html", {"object": model})
  
 def login_page(request):

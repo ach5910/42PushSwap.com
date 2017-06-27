@@ -7,7 +7,7 @@ from    django.conf     import settings
 
 def make_ps(username):
 	print(username)
-	if not os.path.exists("./repomake_error"):
+	if not os.path.exists("./repo/make_error"):
 		make_f = open("./repo/make_error", "w+")
 
 	subprocess.call(["make", "re", "-C" + "./repo/push_swap"], stderr=make_f)

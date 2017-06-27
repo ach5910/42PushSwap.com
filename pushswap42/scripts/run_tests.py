@@ -9,7 +9,7 @@ class Test_500(unittest.TestCase):
 		proc = Popen('./repo/push_swap/push_swap "$(< test1.tst)"', shell=True, stdout=PIPE)
 		re = proc.stdout.read()
 		out = re.split("\n")
-		f = open('result1.txt', 'w')
+		f = open('results.result1.txt', 'w')
 		f.write(re[:-1])
 		results.append((len(out) - 1))
 
@@ -22,7 +22,7 @@ class Test_500(unittest.TestCase):
 		proc = Popen('./repo/push_swap/push_swap "$(< test2.tst)"', shell=True, stdout=PIPE)
 		re = proc.stdout.read()
 		out = re.split("\n")
-		f = open('result2.txt', 'w')
+		f = open('results.results.result2.txt', 'w')
 		f.write(re[:-1])
 		results.append((len(out) - 1))
 
@@ -35,7 +35,7 @@ class Test_500(unittest.TestCase):
 		proc = Popen('./repo/push_swap/push_swap "$(< test3.tst)"', shell=True, stdout=PIPE)
 		re = proc.stdout.read()
 		out = re.split("\n")
-		f = open('result3.txt', 'w')
+		f = open('results.result3.txt', 'w')
 		f.write(re[:-1])
 		results.append((len(out) - 1))
 
@@ -48,7 +48,7 @@ class Test_500(unittest.TestCase):
 		proc = Popen('./repo/push_swap/push_swap "$(< test4.tst)"', shell=True, stdout=PIPE)
 		re = proc.stdout.read()
 		out = re.split("\n")
-		f = open('result4.txt', 'w')
+		f = open('results.result4.txt', 'w')
 		f.write(re[:-1])
 		results.append((len(out) - 1))
 
@@ -61,7 +61,7 @@ class Test_500(unittest.TestCase):
 		proc = Popen('./repo/push_swap/push_swap "$(< test5.tst)"', shell=True, stdout=PIPE)
 		re = proc.stdout.read()
 		out = re.split("\n")
-		f = open('result5.txt', 'w')
+		f = open('results.result5.txt', 'w')
 		f.write(re[:-1])
 		results.append((len(out) - 1))
 

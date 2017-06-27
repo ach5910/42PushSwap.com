@@ -10,7 +10,7 @@ import requests
 import simplejson as json
 from collections import defaultdict
 
-login = ""
+
 CLIENT_ID = '90e918eda87296f5cf1368be3ee840b92a7ac4adad46385da51fcced164da76b'
 CLIENT_SECRET = 'fd94fe3bcb22dbf507e14e5bac8edb273d6b70b512cf6f7323b951c3614f7447'
 # def PushSwapHome(request):

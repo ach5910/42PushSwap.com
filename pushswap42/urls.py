@@ -17,14 +17,15 @@ Including another URLconf
 from django.conf.urls import url
 from django.conf    import settings
 from django.contrib import admin
-from .views import PushSwapHome, request_page, login_page
+from .views import get_return, request_page, login_page
 from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    # url(r'^token/$', token_page, name='token'),
     url(r'^repo/$', request_page, name='repo'),
     url(r'^login/$', login_page, name='login'),
-    url(r'^$', PushSwapHome.as_view(), name='home'),
+    url(r'^$', get_return, name='home'),
 ]
 if settings.DEBUG:
     print('Debug')

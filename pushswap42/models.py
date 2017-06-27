@@ -12,3 +12,6 @@ class Executable(models.Model):
     
     def __str__(self):
         return str(self.name)
+
+    def save(self, *args, **kwargs):
+    	super(Executable, self).save(*args, **kwargs)

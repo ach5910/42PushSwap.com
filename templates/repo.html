@@ -1,16 +1,16 @@
 {% extends "detail.html" %}
 
 {% block content %}
-   <center><p class="lead" style="color:white;">Copy and Paste you PushSwap Git repository link and press the pretty blue button</p></center> 
+   <p class="lead" style="color:white;">Copy and Paste you PushSwap Git repository link and press the pretty blue button</p>
   <!--<form>-->
   <form method='GET' action="/repo/">
     <div class="form-group">
       <label for="git_link">Git link</label>
       <input type="url" class="form-control" name="git_url" id="git_link" aria-describedby="gitHelp" placeholder="https://github.com/sksourou/ft_printf.git">
+      <input type='hidden' name='code' value='{{ code }}'>
     </div>
     <div class="col-md-5 center-block" style="float: none">
-        <!--<a href="#" class="ce pi ahr">Repo</a>-->
-        <input id="testButton" type='submit' value='repo'  class="btn btn-primary btn-lg center-block" name='TestBut';></input>
+        <input id="testButton" type='submit' value='repo'  class="btn btn-primary btn-lg center-block" name='TestBut';>
     </div>
   </form>
   <!--</form>-->

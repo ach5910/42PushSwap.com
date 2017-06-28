@@ -111,29 +111,30 @@
        <br>
        <br>
       <div class="col-md-6">
-      <div class='panel panel-primary'>
-        <div class="panel-heading"><h4>Sample Size - 500</h4></div>
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Min</th>
-            <th>Max</th>
-            <th>Average</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for prog in object %}
-          <tr>
-            <td>{{ prog.name }}</td>
-            <td>{{ prog.t_min_500 }}</td>
-            <td>{{ prog.t_max_500 }}</td>
-            <td>{{ prog.t_avg_500 }}</td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+        <div class='panel panel-primary'>
+          <div class="panel-heading"><h4>Sample Size - 500</h4></div>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Min</th>
+              <th>Max</th>
+              <th>Average</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for prog in object %}
+            <tr>
+              <td>{{ prog.name }}</td>
+              <td>{{ prog.t_min_500 }}</td>
+              <td>{{ prog.t_max_500 }}</td>
+              <td>{{ prog.t_avg_500 }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
 
+      </div>
     </div>
 
 

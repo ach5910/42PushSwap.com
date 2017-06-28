@@ -3,7 +3,7 @@ from .repoclone import clone_repo
 from .make_ps import make_ps
 import time
 from .run_tests import Test_500
-from .run_tests import get_results
+from .run_tests import get_results, init_results
 import unittest
 from pushswap42.models import Executable
 import shutil
@@ -36,17 +36,20 @@ def parse_name():
 def repo_test(giturl, login):
 	clone_repo(giturl)
 	time.sleep(3)
-	# _name = parse_name()
-	_name = login
+	if (login == '-1'):
+		_name = parse_name()
+	else:
+		_name = login
 	make_ps(_name)
 	time.sleep(5)
 	try:
 		os.makedirs('./results')
 	except OSError as exc:  # Python >2.5
-		if exc.errno == errno.EEXIST and os.path.isdir(path):
+		if exc.errno == errno.EEXIST and os.path.isdir('./results'):
 			pass
 		else:
 			raise
+	init_results()
 	suite = unittest.TestSuite()
 	for method in dir(Test_500):
 		if method.startswith("test_"):

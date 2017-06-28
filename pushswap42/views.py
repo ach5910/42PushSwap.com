@@ -54,17 +54,20 @@ def get_token(code):
 def request_page(request):
     model = Executable.objects.all()
     if(request.GET.get('TestBut')):
-        access_token = get_token(request.GET.get('code'))
-        print("AT " + access_token)
-        response  = requests.post('http://api.intra.42.fr/v2/me?access_token=' + access_token)
-        if response.status_code == 200:
-            status = response.json()
-            print(json.dumps(status, sort_keys=True, indent=4))
-            print(status['first_name'])
-            print(status['last_name'])
-            print(status['login'])
-        repo_test(request.GET.get("git_url"), status['login'])
-    return render(request, "repo.html", {"object": model})
+        if(request.GET.get('admin') == 'OK'):
+            repo_test(request.GET.get('git_url'), "-1")
+        else:
+            access_token = get_token(request.GET.get('code'))
+            print("AT " + access_token)
+            response  = requests.post('http://api.intra.42.fr/v2/me?access_token=' + access_token)
+            if response.status_code == 200:
+                status = response.json()
+                print(json.dumps(status, sort_keys=True, indent=4))
+                print(status['first_name'])
+                print(status['last_name'])
+                print(status['login'])
+            repo_test(request.GET.get("git_url"), status['login'])
+    return render(request, "signin.html", {"object": model})
  
 def login_page(request):
     if(request.GET.get('Login')):

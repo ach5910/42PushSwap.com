@@ -1,22 +1,13 @@
 import os
 from subprocess import check_output, PIPE
+from pushswap42.models import Executable
 import numpy
-import random
 
-#Creates a random list of numbers
-def create_arg_list(arg_count):
-	arg_list = []
-	arg_str = ""
-	rand = 0
-	for i in range(arg_count):
-		while (rand in arg_list):
-			rand = random.randint(0, arg_count * 100)
-		arg_list.append(rand)
-		arg_str = arg_str + str(rand) + " "
-	return (arg_str)
 
-#Takes a path to the push swap program and a string of numbers
-#Returns the number of operations required to sort the list
+'''
+Takes a path to the push swap program and a string of numbers
+Returns the number of operations required to sort the list
+'''
 def run_ps(path, args):
 	out = check_output("{}/push_swap {}".format(path, args), shell=True)
 	check = check_output("echo '{}' | {}/checker {}".format(out, path, args), shell=True)
@@ -26,29 +17,40 @@ def run_ps(path, args):
 		op_count = None
 	return (op_count)
 
-#Runs push_swap function with random arguments 'n' times
-def loop_ps(path, arg_count, n):
-	result = []
-	for i in range(0, n):
-		args = create_arg_list(arg_count)
-		op_count = run_ps(path, args)
-		if (op_count == None):
-			return (None)
-		result.append(op_count)
-	return (result)
-
 #Crawls through a test_directory and runs push_swap test on each file
 def read_tests(ps_path, test_dir):
 	result = []
+	print ("\n\033[92mRead_tests\033[0m")
 	for test in os.listdir(test_dir):
-		f = open(test, 'r')
-		args = f.read()
-		f.close()
-		op_count = run_ps(path, args)
-		if (op_count == None):
-			return (None)
-		result.append(op_count)
+		if test.startswith("test"):
+			print (test)
+			f = open(test_dir + "/" + test, 'r')
+			args = f.read()
+			f.close()
+			op_count = run_ps(ps_path, args)
+			if (op_count == None):
+				return (None)
+			result.append(op_count)
 	return (result)
+
+#load database model
+def load_db(login, results):
+	avg = int(sum(results) / len(results))
+	minimum = min(results)
+	maximum = max(results)
+	if Executable.objects.filter(name=login).exists():
+		n = Executable.objects.get(name=login)
+		n.t_min_500 = minimum
+		n.t_max_500 = maximum
+		n.t_avg_500 = avg
+	else:
+		n = Executable.objects.create(name=login,
+				t_min_500=minimum,
+				t_max_500=maximum,
+				t_avg_500=avg)
+	print("Min:{}\nMax:{}\nAvg:{}".format(minimum, maximum, avg))
+	n.save()
+	return (n)
 
 #Prints statistical data of a list
 def describe_ps(results):

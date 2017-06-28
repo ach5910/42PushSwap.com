@@ -33,6 +33,7 @@ def parse_name():
 	else:
 		return "Unknown"
 
+'''
 def repo_test(giturl, login):
 	clone_repo(giturl)
 	time.sleep(3)
@@ -70,6 +71,20 @@ def repo_test(giturl, login):
 	n.save()
 	shutil.rmtree('./repo', ignore_errors=True)
 	shutil.rmtree('./results', ignore_errors=True)
+'''
 
+from .run_ps import load_db, read_tests
 
-
+def repo_test(giturl, login):
+	shutil.rmtree('./repo', ignore_errors=True)
+	clone_repo(giturl)
+	time.sleep(3)
+	if (login == '-1'):
+		_name = parse_name()
+	else:
+		_name = login
+	make_ps(_name)
+	time.sleep(5)
+	results = read_tests('./repo/push_swap', 'tests/test_500')
+	n = load_db(_name, results)
+	shutil.rmtree('./repo', ignore_errors=True)

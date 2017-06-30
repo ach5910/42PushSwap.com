@@ -85,6 +85,9 @@ def repo_test(giturl, login):
 		_name = login
 	make_ps(_name)
 	time.sleep(5)
-	results = read_tests('./repo/push_swap', 'tests/test_500')
+	if (os.path.isfile('./repo/push_swap/push_swap') and os.access('./repo/push_swap/push_swap')):
+		results = read_tests('./repo/push_swap', 'tests/test_500')
+	else:
+		results = None
 	n = load_db(_name, results)
 	shutil.rmtree('./repo', ignore_errors=True)

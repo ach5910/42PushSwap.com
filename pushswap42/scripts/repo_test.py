@@ -74,6 +74,7 @@ def repo_test(giturl, login):
 '''
 
 from .run_ps import load_db, read_tests
+from .results_to_json import results_to_json
 
 def repo_test(giturl, login):
 	shutil.rmtree('./repo', ignore_errors=True)
@@ -85,9 +86,10 @@ def repo_test(giturl, login):
 		_name = login
 	make_ps(_name)
 	time.sleep(5)
-	if (os.path.isfile('./repo/push_swap/push_swap') and os.access('./repo/push_swap/push_swap')):
+	if (os.path.isfile('./repo/push_swap/push_swap') and os.access('./repo/push_swap/push_swap', os.X_OK)):
 		results = read_tests('./repo/push_swap', 'tests/test_500')
 	else:
 		results = None
+	results_to_json(results)
 	n = load_db(_name, results)
 	shutil.rmtree('./repo', ignore_errors=True)

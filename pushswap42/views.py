@@ -28,6 +28,11 @@ def get_return(request):
         return render(request, "signin.html", {"object": model})
     else:
         return render(request, "signin.html", {"object": model})
+
+def user_page(request):
+    user_pk = request.GET.get('pk')
+    model = Executable.objects.get(pk=user_pk)
+    return render(request, 'user.html', {"user": model})
 # def success_login(request):
 #     print('SUCCESS')
 #     if(request.GET.get('code')):

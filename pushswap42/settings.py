@@ -25,7 +25,7 @@ SECRET_KEY = '=z%a-#otmjbi7)6i7ln-*6tzd_@s&ny3^%p3f5!li%s4t#gns@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.pushswap42.com', '138.197.222.19']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 

@@ -1,0 +1,8 @@
+Setting up postgres
+
+> virtualenv
+	> need to source .bashrc everytime to get virtual env commands to work
+
+> not sure if I have postgres-contrib
+> not sure if I have 'postgres' user
+> was not able to set timezone ...

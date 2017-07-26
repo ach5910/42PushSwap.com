@@ -25,7 +25,7 @@ SECRET_KEY = '=z%a-#otmjbi7)6i7ln-*6tzd_@s&ny3^%p3f5!li%s4t#gns@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.pushswap42.com', '138.197.222.19']
+ALLOWED_HOSTS = ['.pushswap42.com', '138.197.222.19', '127.0.0.1', 'localhost']
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
@@ -76,23 +76,23 @@ WSGI_APPLICATION = 'pushswap42.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-#DATABASES = {
-#    'default': {
-#       'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#       'NAME': 'pushswap42',
-#	'USER': 'zsmith',
-#	'PASSWORD': 'codingiscool',
-#	'HOST': 'localhost',
-#	'PORT': '',
-#    }
-#}
-
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+   'default': {
+      'ENGINE': 'django.db.backends.postgresql_psycopg2',
+      'NAME': 'pushswap42',
+	'USER': 'zsmith',
+	'PASSWORD': 'codingiscool',
+	'HOST': 'localhost',
+	'PORT': '',
+   }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 
 
 # Password validation

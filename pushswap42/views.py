@@ -3,9 +3,7 @@ from django.contrib.auth import get_user_model
 from django.db.models import Q
 from django.views.generic import DetailView
 from scripts.repoclone import clone_repo
-from .models import Executable
-from scripts.make_ps import make_ps
-from scripts.repo_test import repo_test
+from pushswap42.models import Executable
 import requests
 import simplejson as json
 from collections import defaultdict
@@ -21,14 +19,16 @@ CLIENT_SECRET = 'fd94fe3bcb22dbf507e14e5bac8edb273d6b70b512cf6f7323b951c3614f744
 
 def get_return(request):
     model = Executable.objects.all()
+    print model
  #   run_container()
-    if (request.GET.get('code')):
-        return render(request, "repo.html", {"object": model, "code":request.GET.get('code')})
-    elif (request.GET.get('error')):
-        print("elif")
-        return render(request, "signin.html", {"object": model})
-    else:
-        return render(request, "signin.html", {"object": model})
+    # if (request.GET.get('code')):
+    #     return render(request, "repo.html", {"object": model, "code":request.GET.get('code')})
+    # elif (request.GET.get('error')):
+    #     print("elif")
+    #     return render(request, "signin.html", {"object": model})
+    # else:
+    #     return render(request, "signin.html", {"object": model})
+    return render(request, "signin.html", {"object": model})
 
 def user_page(request):
     user_pk = request.GET.get('pk')

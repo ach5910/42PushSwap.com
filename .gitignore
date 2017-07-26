@@ -1,1 +1,5 @@
 *.pyc
+.Python
+pip-selfcheck.json
+include
+lib
